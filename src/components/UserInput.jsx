@@ -24,7 +24,8 @@ const UserInput = () => {
             <div className='container'>
                 <div className="banner">
                     <h1>Hello trainer!</h1>
-                    <img src="./src/images/trainerImg.png" alt="" />
+                    {/* <img src="./src/images/trainerImg.png" alt="" /> */}
+                    <img src="https://www.seekpng.com/png/full/201-2011786_red-by-xous-54-red-pokemon-trainer-png.png" alt="" />
                 </div>
                 <p className='title-input'>Give me your name to start</p>
                 <form onSubmit={submit} className='form'>
