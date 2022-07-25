@@ -60,10 +60,10 @@ const PokemonItem = ({ pokemonUrl }) => {
                             {" "}{pokemon.stats?.[5].base_stat}
                         </div>
                     </div>
-                    <div>
-                        <img className='img-pokemon-item' src={pokemon.sprites?.other?.["official-artwork"]?.front_default} alt="" />
-                    </div>
 
+                </div>
+                <div className='img'>
+                    <img className='img-pokemon-item' src={pokemon.sprites?.other?.["official-artwork"]?.front_default} alt="" />
                 </div>
             
             

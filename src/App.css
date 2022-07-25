@@ -377,6 +377,21 @@ a, a:hover {
   height: 195px;
   text-align: initial;
 }
+.img{
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.img img{
+  position: absolute;
+  width: 120%;
+  right: -5px;
+  z-index: 10;
+  width: 100px;
+  height: auto;
+}
+
+
 .cloud{
   background: hsla(0,0%,100%,.2);
   margin-bottom: 3px;
@@ -384,7 +399,7 @@ a, a:hover {
   border-radius: 13px;
   display: inline-block;
 }
-.img-pokemon-item{
+/* .img-pokemon-item{
   width: 100px;
   height: auto;
   position: relative;
@@ -392,7 +407,7 @@ a, a:hover {
   z-index: 10;
   left: 100px;
   bottom: 82px;
-}
+} */
 .ul-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
