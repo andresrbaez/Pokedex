@@ -11,6 +11,19 @@ const Pokedex = () => {
   const [pokemonSearch, setPokemonSearch] = useState("");
   const [types, setTypes] = useState([]);
 
+//   const colors = [
+//     "#5539A5",
+//     "#322F20",
+//     "#6A5837",
+//     "#988F2A",
+//     "#ffc75f",
+//     "#C28E70",
+//     "#90905C",
+//     "#4b4453",
+//     "#b0a8b9",
+//     "#c34a36",
+//   ];
+
   const navigate = useNavigate();
 
   // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154
@@ -52,6 +65,10 @@ const Pokedex = () => {
     numbers.push(i);
   }
 
+//   const toggleSearch = () => {
+//     if()
+//   }
+
   return (
     <div>
       <div className="pokeball-background"></div>  
@@ -64,7 +81,7 @@ const Pokedex = () => {
       </div>
       <div>
         <h1 className="poke-title">Pokedex</h1>
-        <p className="title-p">Welcome {user} this is the pokedex wiki</p>
+        <p className="title-p">Welcome <b>{user}</b> this is the pokedex wiki</p>
         <div className="center">
           <span>type</span>
           <input type="checkbox" />
