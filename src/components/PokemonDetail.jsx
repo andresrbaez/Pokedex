@@ -9,6 +9,11 @@ const PokemonDetail = () => {
 
   const { id } = useParams();
 
+//   data-percent={`${(100/(150/(pokeStats?.base_stat)))}`}
+    //  const divStyle = { width: `${(100/(150/(pokeStats?.base_stat)))}%` };
+//   const divStyles = { width: "40%", background: "green" };
+//   const divStyles = { width: "40%", background: "green" };
+
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -88,28 +93,41 @@ const PokemonDetail = () => {
           </div>
           <div className="stats-container box-shadow">
             <h1 className="h1-txt">Stats</h1>
-            <ul>
+            <div className="container-flex-stats">
               {pokemon.stats?.map((pokeStats) => (
-                <li key={pokeStats?.stat?.url}>
-                  <b>
-                    {pokeStats?.stat?.name}
-                    {": "}
-                  </b>
-                  {pokeStats?.base_stat}
-                </li>
+                <div 
+                className="row-stats"
+                key={pokeStats?.stat?.url}>
+                  <div className="row-left-stats">
+                    <div className="stat-first">
+                        {pokeStats?.stat?.name}
+                        {": "}
+                    </div>
+                  </div>
+                  <div className="row-right-stats">
+                    <div className="stat-bar" >
+                        <div className="stat-last" data-percent={`${(100/(150/(pokeStats?.base_stat)))}`} style={{ width: `${(100/(150/(pokeStats?.base_stat)))}%` , background: "#e3924cc6"}}>
+                        {/* <div className="stat-last" style={{ width: "40%", background: "green" }}> */}
+                            {pokeStats?.base_stat}/150
+                        </div>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
         <div className="container-movements box-shadow">
           <h1 className="h1-txt">Movements</h1>
-          <ul>
+          <table>
             {pokemon.moves?.map((pokeMoves) => (
-              <li key={pokeMoves?.move?.url}>
-                <p>{pokeMoves?.move?.name}</p>
-              </li>
+              <tbody key={pokeMoves?.move?.url}>
+                <tr>
+                    <td className="line-movement">{pokeMoves?.move?.name}</td>
+                </tr>
+              </tbody>
             ))}
-          </ul>
+          </table>
         </div>
       </div>
     </div>

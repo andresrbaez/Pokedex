@@ -146,18 +146,21 @@ const Pokedex = () => {
           </ul>
         </div>
       </div>
+
+
+      {/* PAGINATION */}
+
       <div className="btn-pagination">
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-            Prev page
+        <button className="btn-numbers" onClick={() => setPage(page - 1)} disabled={page === 1}>
+        <i className='bx bx-chevron-left icon-size'></i>
         </button>
         {numbers.map((number) => (
-            <button key={number} onClick={() => setPage(number)}>{number}</button>
+            <button className="btn-numbers" key={number} onClick={() => setPage(number)}>{number}</button>
         ))}
-        <button onClick={() => setPage(page + 1)} disabled={page === lastPage}>
-            Next Page
+        <button className="btn-numbers" onClick={() => setPage(page + 1)} disabled={page === lastPage}>
+        <i className='bx bx-chevron-right icon-size'></i>
         </button>
       </div>
-
 
     </div>
   );
