@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
+import getBackground from "../utils/getBackground";
 
 const PokemonDetail = () => {
   const [pokemon, setPokemon] = useState({});
@@ -14,14 +15,16 @@ const PokemonDetail = () => {
       .then((res) => setPokemon(res.data));
     // .catch(error => console.error)
   }, [id]);
-  console.log(pokemon);
+  console.log(pokemon.types?.[0].type.name);
+
+  document.body.style=`background: ${getBackground(pokemon.types?.[0].type.name)}`
 
   return (
     <div>
       <div className="pokeball-background"></div>
       <div className="header-back">
         <a href="#/pokedex">
-          <i className="bx bx-left-arrow-alt"></i>
+          <i className="bx bx-left-arrow-alt txt-shadow"></i>
         </a>
       </div>
       <div className="img-logo-bg">
@@ -83,20 +86,20 @@ const PokemonDetail = () => {
               </div>
             </div>
           </div>
-            <div className="stats-container box-shadow">
-              <h1 className="h1-txt">Stats</h1>
-              <ul>
-                {pokemon.stats?.map((pokeStats) => (
-                  <li key={pokeStats?.stat?.url}>
-                    <b>
-                      {pokeStats?.stat?.name}
-                      {": "}
-                    </b>
-                    {pokeStats?.base_stat}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="stats-container box-shadow">
+            <h1 className="h1-txt">Stats</h1>
+            <ul>
+              {pokemon.stats?.map((pokeStats) => (
+                <li key={pokeStats?.stat?.url}>
+                  <b>
+                    {pokeStats?.stat?.name}
+                    {": "}
+                  </b>
+                  {pokeStats?.base_stat}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="container-movements box-shadow">
           <h1 className="h1-txt">Movements</h1>

@@ -34,25 +34,6 @@ ul, li{
   --weight-bold: 700;
 }
 
-/* colors per type */
-/* normal: background: rgb(115, 81, 89) none repeat scroll 0% 0%;
-fighting: background: rgb(151, 63, 38) none repeat scroll 0% 0%;
-flying: background: rgb(72, 103, 123) none repeat scroll 0% 0%;
-poison: background: rgb(91, 45, 134) none repeat scroll 0% 0%;
-ground: background: rgb(255, 235, 59) none repeat scroll 0% 0%;
-rock: background: rgb(70, 24, 11) none repeat scroll 0% 0%;
-bug: background: rgb(139, 195, 74) none repeat scroll 0% 0%;
-ghost: background: rgb(49, 51, 106) none repeat scroll 0% 0%;
-steel:   background: rgb(93, 115, 108) none repeat scroll 0% 0%;
-fire: background: rgb(251, 108, 108) none repeat scroll 0% 0%;
-water: background: rgb(112, 183, 250) none repeat scroll 0% 0%;
-grass: background: rgb(72, 208, 176) none repeat scroll 0% 0%;
-electric: background: rgb(226, 224, 45) none repeat scroll 0% 0%;
-psychic: background: rgb(255, 235, 59) none repeat scroll 0% 0%;
-ice: background: rgb(134, 210, 244) none repeat scroll 0% 0%;
-dragon: background: rgb(68, 138, 148) none repeat scroll 0% 0%;
-dark: background: rgb(3, 7, 6) none repeat scroll 0% 0%;
-fairy: background: rgb(152, 24, 68) none repeat scroll 0% 0%; */
 
 
 
@@ -719,3 +700,86 @@ li::first-letter{
 button {
   font-size: calc(10px + 2vmin);
 } */
+
+
+
+
+/* colors per type */
+/* normal: background: rgb(115, 81, 89)
+fighting: background: rgb(151, 63, 38)
+flying: background: rgb(72, 103, 123)
+poison: background: rgb(91, 45, 134)
+ground: background: rgb(255, 235, 59)
+rock: background: rgb(70, 24, 11)
+bug: background: rgb(139, 195, 74)
+ghost: background: rgb(49, 51, 106)
+steel:   background: rgb(93, 115, 108)
+fire: background: rgb(251, 108, 108)
+water: background: rgb(112, 183, 250)
+grass: background: rgb(72, 208, 176)
+
+electric: background: rgb(226, 224, 45)
+psychic: background: rgb(255, 235, 59)
+ice: background: rgb(134, 210, 244)
+dragon: background: rgb(68, 138, 148)
+dark: background: rgb(3, 7, 6)
+fairy: background: rgb(152, 24, 68) */
+
+.normal{
+  background: rgb(115, 81, 89)
+}
+.fighting{
+  background: rgb(151, 63, 38)
+}
+.flying{
+  background: rgb(72, 103, 123)
+}
+.poison{
+  background: rgb(91, 45, 134)
+}
+.ground{
+  background: rgb(255, 235, 59)
+}
+.rock{
+  background: rgb(70, 24, 11)
+}
+.bug{
+  background: rgb(139, 195, 74)
+}
+.ghost{
+  background: rgb(49, 51, 106)
+}
+.steel{
+  background: rgb(93, 115, 108)
+}
+.fire{
+  background: rgb(251, 108, 108)
+}
+.water{
+  background: rgb(112, 183, 250)
+}
+.grass{
+  background: rgb(72, 208, 176)
+}
+.electric{
+  background: rgb(226, 224, 45)
+}
+.psychic{
+  background: rgba(243, 223, 52, 0.841)
+}
+.ice{
+  background: rgb(134, 210, 244)
+}
+.dragon{
+  background: rgb(68, 138, 148)
+}
+.dark{
+  background: rgb(3, 7, 6)
+}
+.fairy{
+  background: rgb(152, 24, 68)
+}
+
+.txt-shadow{
+  text-shadow: 2px -1px 5px #fff;
+}

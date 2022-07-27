@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PokemonItem from "./PokemonItem";
 
 const Pokedex = () => {
@@ -11,26 +11,21 @@ const Pokedex = () => {
   const [pokemonSearch, setPokemonSearch] = useState("");
   const [types, setTypes] = useState([]);
 
-//   const colors = [
-//     "#5539A5",
-//     "#322F20",
-//     "#6A5837",
-//     "#988F2A",
-//     "#ffc75f",
-//     "#C28E70",
-//     "#90905C",
-//     "#4b4453",
-//     "#b0a8b9",
-//     "#c34a36",
-//   ];
+  const [ toggle, setToggle ] = useState(false);
+
+  const location = useLocation();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style= 'background: #fff'
+  }, [ location ])
 
   // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154
   useEffect(() => {
     const random = Math.floor(Math.random() * 20) + 1;
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/`)
+      .get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154`)
       .then((res) => setGetPokemons(res.data.results));
 
     axios
@@ -55,15 +50,20 @@ const Pokedex = () => {
   const [page, setPage] = useState(1);
   const lastIndex = page * 20;
   const firstIndex = lastIndex - 20;
-  const pokemonsPaginated = getPokemons.pokemon?.slice(firstIndex, lastIndex);
+  const pokemons = getPokemons.pokemon ? getPokemons.pokemon : getPokemons
+  const pokemonsPaginated = pokemons.slice(firstIndex, lastIndex);
 
   //   const lastPage = Math.ceil(getPokemons.pokemon?.length / charactersPerPage);
-  const lastPage = Math.ceil(getPokemons.pokemon?.length / 20);
+  const lastPage = Math.ceil(pokemons.length / 20);
 
-  const numbers = [];
+  const numbers = []; // [1, 2, 3, 4, 5, 6 ... 57]
   for (let i = 1; i <= lastPage; i++) {
-    numbers.push(i);
+    if(numbers.length < 10){
+        numbers.push(i);
+    }
   }
+
+//   console.log(searchFilter)
 
 //   const toggleSearch = () => {
 //     if()
@@ -84,44 +84,54 @@ const Pokedex = () => {
         <p className="title-p">Welcome <b>{user}</b> this is the pokedex wiki</p>
         <div className="center">
           <span>type</span>
-          <input type="checkbox" />
+          <input type="checkbox" checked={toggle} onChange={e => setToggle(e.target.checked)} />
           <span>pokemon</span>
         </div>
 
-        <div className="center">
-          <input id="check" type="checkbox" />
-          <div className="box">
-            <form onSubmit={search} className="form-inp">
-              <input
-                type="text"
-                value={pokemonSearch}
-                placeholder="Search here..."
-                onChange={(e) => setPokemonSearch(e.target.value)}
-              />
-              <label htmlFor="check">
-                <i className="bx bx-search-alt-2"></i>
-              </label>
-              {/* <button>Search</button> */}
-            </form>
-          </div>
-        </div>
+        {
+            toggle ? (
+                <>
+                <div className="center">
+                <input id="check" type="checkbox" />
+                <div className="box">
+                    <form onSubmit={search} className="form-inp">
+                    <input
+                        type="text"
+                        value={pokemonSearch}
+                        placeholder="Search here..."
+                        onChange={(e) => setPokemonSearch(e.target.value)}
+                    />
+                    <label htmlFor="check">
+                        <i className="bx bx-search-alt-2"></i>
+                    </label>
+                    {/* <button>Search</button> */}
+                    </form>
+                </div>
+                </div>
+                </>
+            ) : (
+                <>
 
-        {/* Sección para filtrar */}
-        <select onChange={filterPokemon}>
-          <option value="">All pokemons</option>
-          {types.map((type) => (
-            <option value={type.url} key={type.url}>
-              {type.name}
-            </option>
-          ))}
-        </select>
+                {/* Sección para filtrar */}
+                <select onChange={filterPokemon}>
+                <option value="">All pokemons</option>
+                {types.map((type) => (
+                    <option value={type.url} key={type.url}>
+                    {type.name}
+                    </option>
+                ))}
+                </select>
+                </>
+            )
+        }
+
 
         <hr />
         <br />
         <br />
         <div className="card-ul">
           <ul className="ul-grid">
-            {getPokemons.map((getPokemon) => (
+            {pokemonsPaginated.map((getPokemon) => (
               <li
                 key={getPokemon.url ? getPokemon.url : getPokemon.pokemon.url}
               >
@@ -141,7 +151,7 @@ const Pokedex = () => {
             Prev page
         </button>
         {numbers.map((number) => (
-            <button onClick={() => setPage(number)}>{number}</button>
+            <button key={number} onClick={() => setPage(number)}>{number}</button>
         ))}
         <button onClick={() => setPage(page + 1)} disabled={page === lastPage}>
             Next Page

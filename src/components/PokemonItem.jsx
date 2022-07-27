@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import getBackground from '../utils/getBackground';
 
 const PokemonItem = ({ pokemonUrl }) => {
 
@@ -16,7 +17,11 @@ const PokemonItem = ({ pokemonUrl }) => {
 
 
     return (
-        <div className='item-box' onClick={() => navigate(`/pokedex/${pokemon.id}`)}>
+        <div 
+            className={`item-box`}
+            style={{background: getBackground(pokemon.types?.[0].type.name)}}
+            onClick={() => navigate(`/pokedex/${pokemon.id}`)}
+        >
             
                 <div className='text'>
                     <h3 className='title-item'>{pokemon.name}</h3>
