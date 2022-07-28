@@ -68,9 +68,15 @@ const PokemonDetail = () => {
               </div>
               <hr />
               <div className="container-type-info">
-                <div>
+                <div className="container-wrap">
                   {pokemon.types?.map((pokeType) => (
-                    <li key={pokeType?.type?.url}>{pokeType?.type?.name}</li>
+                    <div 
+                    className="container-wrap-inf" 
+                    style={{background: getBackground(pokeType?.type?.name), color: "#fff"}} 
+                    key={pokeType?.type?.url}
+                    >
+                        <p>{pokeType?.type?.name}</p>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -81,11 +87,11 @@ const PokemonDetail = () => {
               </div>
               <hr />
               <div className="container-type-info">
-                <div>
+                <div className="container-wrap">
                   {pokemon.abilities?.map((pokeAbs) => (
-                    <li key={pokeAbs?.ability?.url}>
-                      {pokeAbs?.ability?.name}
-                    </li>
+                    <div className="container-wrap-inf bg-ab" key={pokeAbs?.ability?.url}>
+                      <p>{pokeAbs?.ability?.name}</p>
+                    </div>
                   ))}
                 </div>
               </div>
