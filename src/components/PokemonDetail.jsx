@@ -25,7 +25,7 @@ const PokemonDetail = () => {
   document.body.style=`background: ${getBackground(pokemon.types?.[0].type.name)}`
 
   return (
-    <div>
+    <div className="center-b">
       <div className="pokeball-background"></div>
       <div className="header-back">
         <a href="#/pokedex">
