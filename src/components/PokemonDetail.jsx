@@ -3,16 +3,12 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
 import getBackground from "../utils/getBackground";
+import bgPokemon from '../images/pngegg.png'
 
 const PokemonDetail = () => {
   const [pokemon, setPokemon] = useState({});
 
   const { id } = useParams();
-
-//   data-percent={`${(100/(150/(pokeStats?.base_stat)))}`}
-    //  const divStyle = { width: `${(100/(150/(pokeStats?.base_stat)))}%` };
-//   const divStyles = { width: "40%", background: "green" };
-//   const divStyles = { width: "40%", background: "green" };
 
   useEffect(() => {
     axios
@@ -33,7 +29,7 @@ const PokemonDetail = () => {
         </a>
       </div>
       <div className="img-logo-bg">
-        <img src="./src/images/pngegg.png" alt="" />
+        <img src={bgPokemon} alt="" />
       </div>
       <div className="principal-columns">
         <div>
