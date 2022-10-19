@@ -581,7 +581,8 @@ a:link, a:visited, a:active {
   gap: 10px;
   width: 100%;
   padding: 50px;
-  height: 908px;
+  height: 100%;
+  max-height: 908px;
   overflow-y: auto;
 }
 .container-movements>h1{

@@ -9,6 +9,11 @@ const PokemonItem = ({ pokemonUrl }) => {
 
     const navigate = useNavigate();
 
+    const scrollTop = () => {
+        navigate(`/pokedex/${pokemon.id}`)
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
     useEffect(() => {
         axios.get(pokemonUrl)
             .then(res => setPokemon(res.data))
@@ -20,7 +25,8 @@ const PokemonItem = ({ pokemonUrl }) => {
         <div 
             className={`item-box`}
             style={{background: getBackground(pokemon.types?.[0].type.name)}}
-            onClick={() => navigate(`/pokedex/${pokemon.id}`)}
+            // onClick={() => navigate(`/pokedex/${pokemon.id}`)}
+            onClick={() => scrollTop()}
         >
             
                 <div className='text'>
