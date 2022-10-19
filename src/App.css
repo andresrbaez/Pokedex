@@ -549,6 +549,15 @@ a:link, a:visited, a:active {
   background: #67c98e;
   transition: .2s;
 }
+
+.btn-numbers[disabled=disabled], .btn-numbers:disabled {
+  background-color: #0a838355;
+  cursor: default;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+
 .icon-size{
   font-size: 1.7rem;
   display: flex;
@@ -572,6 +581,8 @@ a:link, a:visited, a:active {
   gap: 10px;
   width: 100%;
   padding: 50px;
+  height: 908px;
+  overflow-y: auto;
 }
 .container-movements>h1{
   margin-bottom: 10px;
